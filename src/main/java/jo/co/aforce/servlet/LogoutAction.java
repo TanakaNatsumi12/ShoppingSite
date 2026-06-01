@@ -3,14 +3,15 @@ package jo.co.aforce.servlet;
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import jo.co.aforce.tool.Action;
 
-public class LogoutServlet extends HttpServlet{
-	public void doPost(
+
+public class LogoutAction extends Action{
+	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		)throws ServletException, IOException{
 		
@@ -19,10 +20,10 @@ public class LogoutServlet extends HttpServlet{
 		
 		if(session.getAttribute("customer")!=null) {
 			session.removeAttribute("customer");
-			request.getRequestDispatcher("views/logout-out.jsp").forward(request, response); 
+			return "views/logout-out.jsp"; 
 		}
 		
-		request.getRequestDispatcher("views/login-error.jsp").forward(request, response);
+		return "views/logout-error.jsp";
 	}
 
 }

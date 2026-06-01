@@ -12,7 +12,7 @@
 <jsp:include page="/views/header.jsp" />
 <body>
 
-ログアウトしました。
+すでにログアウトしています。
 
 <form action="views/login-in.jsp" method="post">
 <input type="submit" value="ログイン画面に戻る">

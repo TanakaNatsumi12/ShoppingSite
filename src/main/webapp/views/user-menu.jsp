@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
+
+<jsp:include page="/views/header.jsp" />
 <body>
 
 ようこそ、${customer.lastName}さん
@@ -18,13 +22,10 @@
 <input type="submit" value="削除">
 </form>
 
-<form action="/ShoppingSite/login-in.jsp" method="post">
+<form action="/ShoppingSite/views/logout-in.jsp" method="post">
 <input type="submit" value="ログアウト">
 </form>
 
 
 
-
-
-</body>
-</html>
+<jsp:include page="/views/footer.jsp" />

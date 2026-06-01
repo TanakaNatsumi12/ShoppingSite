@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
+
+<jsp:include page="/views/header.jsp" />
 <body>
 
 IDもしくはパスワードが違います。
@@ -15,5 +19,4 @@ IDもしくはパスワードが違います。
 </form>
 
 
-</body>
-</html>
+<jsp:include page="/views/footer.jsp" />

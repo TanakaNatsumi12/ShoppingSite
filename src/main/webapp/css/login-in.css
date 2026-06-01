@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.login-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding-top: 100px;
+    flex-direction: column;
+}
+
+.password-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.password-wrapper input {
+    padding-right: 35px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}

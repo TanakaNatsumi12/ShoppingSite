@@ -12,11 +12,8 @@
 <jsp:include page="/views/header.jsp" />
 <body>
 
-ログアウトしました。
-
-<form action="views/login-in.jsp" method="post">
-<input type="submit" value="ログイン画面に戻る">
-</form>
+<p>ログアウトしますか？</p>
+<p><a href="<%= request.getContextPath() %>/Logout.action">ログアウト</a></p>
 
 
 <jsp:include page="/views/footer.jsp" />
