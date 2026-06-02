@@ -21,7 +21,7 @@
 <h1>ログイン画面</h1>
 
 	<form action="/ShoppingSite/loginServlet" method="post">
-		<p>ID  <input type="text" name="memberId"></p>
+		<p>　　　　ID <input type="text" name="memberId"></p>
 		
 		
 		<div class="password-wrapper">
@@ -33,7 +33,7 @@
 		<p><input type="submit" value="ログイン"></p>
 	</form>
 
-	<form action="" method="post">
+	<form action="/ShoppingSite/views/user-add.jsp" method="post">
   		<p><input type="submit" value="新規登録"></p>
 	</form>
 </div>
