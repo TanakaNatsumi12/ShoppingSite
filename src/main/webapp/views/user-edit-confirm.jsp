@@ -9,20 +9,26 @@
 </head>
 <jsp:include page="/views/header.jsp" />
 
-<h1>登録する内容はよろしいですか？</h1>
+<h1>修正する内容はよろしいですか？</h1>
 
-<p>ユーザーID： ${memberId}</p>
-<p>パスワード： ${password}</p>
 <p>名前（姓）： ${lastName} </p>
 <p>名前（名）： ${firstName}</p>
 <p>住所： ${address}</p>
 <p>メールアドレス： ${mailAddress}</p>
 
-<form action="/ShoppingSite/userAddServlet" method="post">
+<form action="/ShoppingSite/userEditServlet" method="post">
+	
+	<input type="hidden" name="memberId" value="${memberId}">
+    <input type="hidden" name="password" value="${password}">
+    <input type="hidden" name="lastName" value="${lastName}">
+    <input type="hidden" name="firstName" value="${firstName}">
+    <input type="hidden" name="address" value="${address}">
+    <input type="hidden" name="mailAddress" value="${mailAddress}">
+    
 	<input type="submit" value="登録">
 </form>
 
-<form action="/ShoppingSite/views/user-add.jsp" method="post">
+<form action="/ShoppingSite/views/user-edit.jsp" method="post">
 	<input type="submit" value="戻る">
 </form>
 

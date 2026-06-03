@@ -9,26 +9,21 @@
 </head>
 <jsp:include page="/views/header.jsp" />
 
-<h1>新規会員登録</h1>
+<h1>会員情報編集登録</h1>
 
-<c:if test="${not empty error}">
-    <p style="color:red;">${error}</p>
-</c:if>
+<form action="<%= request.getContextPath() %>/userEditConfirmServlet" method="post">
 
-
-<form action="/ShoppingSite/userAddConfirmServlet" method="post" >
-<p>ユーザーID： <input type="text" name="memberId" value="${memberId}">半角英数字</p>
-<p>パスワード： <input type="text" name="password" value="${password}">半角英数字</p>
 <p>名前（姓）： <input type="text" name="lastName" value="${lastName}"></p>
 <p>名前（名）： <input type="text" name="firstName" value="${firstName}"></p>
 <p>住所： <input type="text" name="address" value="${address}"></p>
 <p>メールアドレス： <input type="text" name="mailAddress" value="${mailAddress}"></p>
 
 <input type="submit" value="確認">
-<input type="reset" value="リセット">
 </form>
 
-
+<form action="user-menu.jsp" method="post">
+	<input type="submit" value="メニュー画面へ戻る">
+</form>
 
 
 

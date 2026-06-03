@@ -14,11 +14,11 @@
 
 ようこそ、${customer.lastName}さん
 
-<form action="" method="get">
+<form action="/ShoppingSite/views/user-edit.jsp" method="get">
 <input type="submit" value="修正">
 </form>
 
-<form action="" method="get">
+<form action="/ShoppingSite/views/user-delete-confirm.jsp" method="post">
 <input type="submit" value="削除">
 </form>
 
