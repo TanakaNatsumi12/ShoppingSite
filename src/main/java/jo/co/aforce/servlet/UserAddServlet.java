@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import jo.co.aforce.beans.Customer;
-import jo.co.aforce.dao.CustomerDAO;
+import jo.co.aforce.beans.UserBean;
+import jo.co.aforce.dao.UserDAO;
 
 @WebServlet(urlPatterns= {"/userAddServlet"})
 public class UserAddServlet extends HttpServlet{
@@ -37,12 +37,12 @@ public class UserAddServlet extends HttpServlet{
             return;
         }
 
-        Customer user = new Customer(memberId, password, lastName, firstName, address, mailAddress);
 
-        CustomerDAO dao = new CustomerDAO();
+        UserBean user = new UserBean(memberId, password, lastName, firstName, address, mailAddress);
+
+        UserDAO dao = new UserDAO();
         
 
-     // すでに登録されているかチェック
      boolean exists = false;
      try {
          exists = dao.exists(memberId);
@@ -65,13 +65,13 @@ public class UserAddServlet extends HttpServlet{
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		
-			session.removeAttribute("memberId");
-	        session.removeAttribute("password");
-	        session.removeAttribute("lastName");
-	        session.removeAttribute("firstName");
-	        session.removeAttribute("address");
-	        session.removeAttribute("mailAddress");
+			
+		session.removeAttribute("memberId");
+        session.removeAttribute("password");
+        session.removeAttribute("lastName");
+        session.removeAttribute("firstName");
+        session.removeAttribute("address");
+        session.removeAttribute("mailAddress");
 
         if (result) {
             RequestDispatcher rd = request.getRequestDispatcher("/views/user-success.jsp");

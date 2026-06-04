@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import jo.co.aforce.beans.Customer;
-import jo.co.aforce.dao.CustomerDAO;
+import jo.co.aforce.beans.UserBean;
+import jo.co.aforce.dao.UserDAO;
 
 @WebServlet(urlPatterns= {"/userEditServlet"})
 public class UserEditServlet extends HttpServlet{
@@ -27,7 +27,7 @@ public class UserEditServlet extends HttpServlet{
         String mailAddress = request.getParameter("mailAddress");
         
         HttpSession session = request.getSession();
-        Customer loginUser = (Customer) session.getAttribute("customer");
+        UserBean loginUser = (UserBean) session.getAttribute("customer");
         
         if (loginUser == null) {
             response.sendRedirect("login.jsp");
@@ -39,7 +39,7 @@ public class UserEditServlet extends HttpServlet{
         loginUser.setAddress(address);
         loginUser.setMailAddress(mailAddress);
 
-        CustomerDAO dao = new CustomerDAO();
+        UserDAO dao = new UserDAO();
         boolean result = false;
 
         try {
@@ -49,6 +49,7 @@ public class UserEditServlet extends HttpServlet{
         }
 
         if (result) {
+        	session.setAttribute("customer", loginUser);
             RequestDispatcher rd = request.getRequestDispatcher("/views/user-edit-success.jsp");
             rd.forward(request, response);
         } else {

@@ -16,17 +16,19 @@ public class UserEditConfirmServlet extends HttpServlet{
 			HttpServletRequest request, HttpServletResponse response
 		)throws ServletException, IOException{
 		
-	String lastName = request.getParameter("lastName");
-	String firstName = request.getParameter("firstName");
-	String address = request.getParameter("address");
-	String mailAddress = request.getParameter("mailAddress");
+		request.setCharacterEncoding("UTF-8");
+		
+		String lastName = request.getParameter("lastName");
+		String firstName = request.getParameter("firstName");
+		String address = request.getParameter("address");
+		String mailAddress = request.getParameter("mailAddress");
 
-	request.setAttribute("lastName", lastName);
-	request.setAttribute("firstName", firstName);
-	request.setAttribute("address", address);
-	request.setAttribute("mailAddress", mailAddress);
-
-	
+		
+		request.setAttribute("lastName", lastName);
+		request.setAttribute("firstName", firstName);
+		request.setAttribute("address", address);
+		request.setAttribute("mailAddress", mailAddress);
+		
 	RequestDispatcher rd = request.getRequestDispatcher("/views/user-edit-confirm.jsp");
 	rd.forward(request, response);
 

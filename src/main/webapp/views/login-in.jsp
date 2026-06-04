@@ -13,6 +13,8 @@
 <jsp:include page="/views/header.jsp" />
 
 
+
+
 <body class="login-center">
 
 
@@ -20,14 +22,14 @@
 <div class="login-box">
 <h1>ログイン画面</h1>
 
-	<form action="/ShoppingSite/loginServlet" method="post">
-		<p>　　　　ID <input type="text" name="memberId"></p>
+	<form action="/ShoppingSite/loginServlet" method="post" >
+		<p>　　　　ID <input type="text" name="memberId" required pattern="[a-zA-Z0-9]+" title="半角英数字のみ"></p>
 		
 		
 		<div class="password-wrapper">
 			<p>パスワード  
-			<input type="password" name="password" id="password">
-		 	<span class="password-toggle" id="togglePassword">👁</span>
+			<input type="password" name="password" id="password" required pattern="[a-zA-Z0-9]+" title="半角英数字のみ">
+		 	<span class="password-toggle" id="togglePassword" >👁</span>
 		 	</p> 
 		</div>
 		<p><input type="submit" value="ログイン"></p>

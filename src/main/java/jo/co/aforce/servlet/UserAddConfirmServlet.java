@@ -16,9 +16,6 @@ public class UserAddConfirmServlet extends HttpServlet{
 	public void doPost(
 			HttpServletRequest request, HttpServletResponse response
 		)throws ServletException, IOException{
-		
-	
-	
 	
 	String memberId = request.getParameter("memberId");
 	String password = request.getParameter("password");
@@ -29,7 +26,7 @@ public class UserAddConfirmServlet extends HttpServlet{
 
 	
 	HttpSession session = request.getSession();
-    session.setAttribute("memberId", memberId);
+	session.setAttribute("memberId", memberId);
     session.setAttribute("password", password);
     session.setAttribute("lastName", lastName);
     session.setAttribute("firstName", firstName);

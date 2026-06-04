@@ -13,15 +13,15 @@
 
 <form action="<%= request.getContextPath() %>/userEditConfirmServlet" method="post">
 
-<p>名前（姓）： <input type="text" name="lastName" value="${lastName}"></p>
-<p>名前（名）： <input type="text" name="firstName" value="${firstName}"></p>
-<p>住所： <input type="text" name="address" value="${address}"></p>
-<p>メールアドレス： <input type="text" name="mailAddress" value="${mailAddress}"></p>
+<p>名前（姓）： <input type="text" name="lastName" value="${customer.lastName}" required></p>
+<p>名前（名）： <input type="text" name="firstName" value="${customer.firstName}" required></p>
+<p>住所： <input type="text" name="address" value="${customer.address}" required></p>
+<p>メールアドレス： <input type="email" name="mailAddress" value="${customer.mailAddress}" required ></p>
 
 <input type="submit" value="確認">
 </form>
 
-<form action="user-menu.jsp" method="post">
+<form action="<%= request.getContextPath() %>/views/user-menu.jsp" method="post">
 	<input type="submit" value="メニュー画面へ戻る">
 </form>
 

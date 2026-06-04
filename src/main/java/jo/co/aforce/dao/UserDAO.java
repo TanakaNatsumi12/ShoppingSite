@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import jo.co.aforce.beans.Customer;
+import jo.co.aforce.beans.UserBean;
 
-public class CustomerDAO extends DAO{
+public class UserDAO extends DAO{
 	
-	public Customer search(String memberId, String password)
+	public UserBean search(String memberId, String password)
 		throws Exception {
-		Customer customer=null;
+		UserBean customer=null;
 		
 		Connection con=getConnection();
 		
@@ -24,11 +24,13 @@ public class CustomerDAO extends DAO{
 	ResultSet rs=st.executeQuery();
 	
 	if(rs.next()) {
-	    customer = new Customer();
+	    customer = new UserBean();
 	    customer.setMemberId(rs.getString("MEMBER_ID"));
 	    customer.setPassword(rs.getString("PASSWORD"));
 	    customer.setLastName(rs.getString("LAST_NAME"));
 	    customer.setFirstName(rs.getString("FIRST_NAME"));
+	    customer.setAddress(rs.getString("ADDRESS"));
+	    customer.setMailAddress(rs.getString("MAIL_ADDRESS"));
 	}
 	
 	st.close();
@@ -37,7 +39,7 @@ public class CustomerDAO extends DAO{
 	
 	}
 	
-	public boolean insert(Customer customer) throws Exception {
+	public boolean insert(UserBean customer) throws Exception {
 
 	    Connection con = getConnection();
 
@@ -79,7 +81,7 @@ public class CustomerDAO extends DAO{
 	}
 	
 	
-	public boolean update(Customer user) throws Exception {
+	public boolean update(UserBean user) throws Exception {
 	    Connection con = getConnection();
 
 	    String sql = "UPDATE users SET LAST_NAME=?, FIRST_NAME=?, ADDRESS=?, MAIL_ADDRESS=? WHERE MEMBER_ID=?";

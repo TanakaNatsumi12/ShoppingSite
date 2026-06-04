@@ -1,6 +1,6 @@
 package jo.co.aforce.beans;
 
-public class Customer implements java.io.Serializable{
+public class UserBean implements java.io.Serializable{
 	
 	private String memberId;
 	private String password;
@@ -9,7 +9,7 @@ public class Customer implements java.io.Serializable{
 	private String address;
 	private String mailAddress;
 	
-	public Customer() {
+	public UserBean() {
 	    
 	}
 
@@ -62,7 +62,7 @@ public class Customer implements java.io.Serializable{
 		this.mailAddress=mailAddress;
 	}
 	
-	public Customer(String memberId, String password, String lastName, String firstName,String address, String mailAddress) {
+	public UserBean(String memberId, String password, String lastName, String firstName,String address, String mailAddress) {
 	    this.memberId = memberId;
 	    this.password = password;
 	    this.lastName = lastName;

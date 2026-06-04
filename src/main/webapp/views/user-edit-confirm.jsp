@@ -17,14 +17,12 @@
 <p>メールアドレス： ${mailAddress}</p>
 
 <form action="/ShoppingSite/userEditServlet" method="post">
-	
 	<input type="hidden" name="memberId" value="${memberId}">
     <input type="hidden" name="password" value="${password}">
     <input type="hidden" name="lastName" value="${lastName}">
     <input type="hidden" name="firstName" value="${firstName}">
     <input type="hidden" name="address" value="${address}">
     <input type="hidden" name="mailAddress" value="${mailAddress}">
-    
 	<input type="submit" value="登録">
 </form>
 

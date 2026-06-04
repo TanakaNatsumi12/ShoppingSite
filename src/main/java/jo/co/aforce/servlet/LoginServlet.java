@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import jo.co.aforce.beans.Customer;
-import jo.co.aforce.dao.CustomerDAO;
+import jo.co.aforce.beans.UserBean;
+import jo.co.aforce.dao.UserDAO;
 
 @WebServlet(urlPatterns= {"/loginServlet"})
 public class LoginServlet extends HttpServlet{
@@ -21,15 +21,11 @@ public class LoginServlet extends HttpServlet{
 		String password = request.getParameter("password");
 
 		
-		CustomerDAO dao=new CustomerDAO();
-		Customer customer = null;
+		UserDAO dao=new UserDAO();
+		UserBean customer = null;
 		
 		try {
 			customer = dao.search(memberId, password);
-			
-			System.out.println("SESSION ID LOGIN = " + request.getSession().getId());
-			System.out.println("CUSTOMER LOGIN = " + customer);
-			System.out.println("LASTNAME LOGIN = " + customer.getLastName());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

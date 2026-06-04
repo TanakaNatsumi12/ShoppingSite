@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import jo.co.aforce.beans.Customer;
-import jo.co.aforce.dao.CustomerDAO;
+import jo.co.aforce.beans.UserBean;
+import jo.co.aforce.dao.UserDAO;
 
 @WebServlet(urlPatterns= {"/userDeleteServlet"})
 public class UserDeleteServlet extends HttpServlet{
@@ -20,7 +20,7 @@ public class UserDeleteServlet extends HttpServlet{
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        Customer loginUser = (Customer) session.getAttribute("customer");
+        UserBean loginUser = (UserBean) session.getAttribute("customer");
 
         if (loginUser == null) {
             response.sendRedirect("login.jsp");
@@ -29,7 +29,7 @@ public class UserDeleteServlet extends HttpServlet{
 
         String memberId = loginUser.getMemberId();
 
-        CustomerDAO dao = new CustomerDAO();
+        UserDAO dao = new UserDAO();
         boolean result = false;
 
         try {
