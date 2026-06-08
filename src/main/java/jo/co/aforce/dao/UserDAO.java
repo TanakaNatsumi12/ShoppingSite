@@ -31,6 +31,7 @@ public class UserDAO extends DAO{
 	    customer.setFirstName(rs.getString("FIRST_NAME"));
 	    customer.setAddress(rs.getString("ADDRESS"));
 	    customer.setMailAddress(rs.getString("MAIL_ADDRESS"));
+	    customer.setRole(rs.getString("ROLE")); 
 	}
 	
 	st.close();

@@ -32,15 +32,24 @@ public class LoginServlet extends HttpServlet{
 		
 		if(customer == null) {
 			request.getRequestDispatcher("views/login-error.jsp").forward(request, response);
-		}else {
-			HttpSession session = request.getSession();
-			session.setAttribute("customer", customer);
-			
-			System.out.println("SESSION AFTER SET = " + session.getAttribute("customer"));
-			
-			 request.getRequestDispatcher("views/user-menu.jsp").forward(request, response);
+			return;
 		}
+	
+		
+		HttpSession session = request.getSession();
+        session.setAttribute("customer", customer);
+        session.setAttribute("role", customer.getRole());
 
+        System.out.println("ログインユーザー: " + customer.getMemberId());
+        System.out.println("権限: " + customer.getRole());
+
+        
+        if ("admin".equals(customer.getRole())) {
+            request.getRequestDispatcher("views/admin-menu.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("views/user-menu.jsp").forward(request, response);
+        }
+		
 		
 	}
 }

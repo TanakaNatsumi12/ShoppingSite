@@ -8,6 +8,7 @@ public class UserBean implements java.io.Serializable{
 	private String firstName;
 	private String address;
 	private String mailAddress;
+	private String role;
 	
 	public UserBean() {
 	    
@@ -38,6 +39,10 @@ public class UserBean implements java.io.Serializable{
 		return mailAddress;
 	}
 	
+	public String getRole() {
+	    return role;
+	}
+	
 	public void setMemberId(String memberId) {
 		this.memberId=memberId;
 	}
@@ -60,6 +65,10 @@ public class UserBean implements java.io.Serializable{
 	
 	public void setMailAddress(String mailAddress) {
 		this.mailAddress=mailAddress;
+	}
+	
+	public void setRole(String role) {
+	    this.role = role;
 	}
 	
 	public UserBean(String memberId, String password, String lastName, String firstName,String address, String mailAddress) {

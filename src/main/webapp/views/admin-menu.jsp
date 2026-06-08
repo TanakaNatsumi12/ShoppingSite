@@ -5,17 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
-<body>
+
 <jsp:include page="/views/header.jsp" />
 
+<h1>管理者画面</h1>
 
-IDもしくはパスワードが違います。
 
-<form action="/ShoppingSite/views/login-in.jsp" method="post">
-<input type="submit" value="ログイン画面へ戻る">
+
+
+
+
+<form action="/ShoppingSite/views/logout-in.jsp" method="post">
+<input type="submit" value="ログアウト">
 </form>
 
 

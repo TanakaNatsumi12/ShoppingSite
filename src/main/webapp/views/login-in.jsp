@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/login-in.css">
 
 </head>
+
+
 <jsp:include page="/views/header.jsp" />
-
-
 
 
 <body class="login-center">
