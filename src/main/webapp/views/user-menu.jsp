@@ -12,6 +12,7 @@
 <jsp:include page="/views/header.jsp" />
 <body>
 
+
 ようこそ、${customer.lastName}さん
 
 <form action="/ShoppingSite/views/user-edit.jsp" method="get">
