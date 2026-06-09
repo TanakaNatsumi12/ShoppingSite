@@ -30,7 +30,7 @@ public class UserEditServlet extends HttpServlet{
         UserBean loginUser = (UserBean) session.getAttribute("customer");
         
         if (loginUser == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect(request.getContextPath() + "/views/no-login.jsp");
             return;
         }
 
