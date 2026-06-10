@@ -26,8 +26,7 @@
 	<input type="submit" value="登録">
 </form>
 
-<form action="/ShoppingSite/views/user-edit.jsp" method="post">
-	<input type="submit" value="戻る">
+<form>
+    <input type="button" value="戻る" onclick="history.back();">
 </form>
-
 <jsp:include page="/views/footer.jsp" />

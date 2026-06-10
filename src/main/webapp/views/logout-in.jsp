@@ -6,27 +6,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<%
+    String role = (String) session.getAttribute("role");
+    boolean isAdmin = "admin".equals(role);
+%>
+
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 
-<jsp:include page="/views/header.jsp" />
+<% if (isAdmin) { %>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin.css">
+<% } else { %>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+<% } %>
 <body>
 
 <p>ログアウトしますか？</p>
 <p><a href="<%= request.getContextPath() %>/Logout.action">ログアウト</a></p>
 
-<%
-    String role = (String) session.getAttribute("role");
-    String backPage = "views/user-menu.jsp";
+<% if (isAdmin) { %>
+    <jsp:include page="/views/admin-header.jsp" />
+<% } else { %>
+    <jsp:include page="/views/header.jsp" />
+<% } %>
 
-    if ("admin".equals(role)) {
-        backPage = "views/admin-menu.jsp";
-    }
-%>
-
-<form action="<%= request.getContextPath() %>/<%= backPage %>" method="post">
-    <input type="submit" value="いいえ">
+<form>
+    <input type="button" value="いいえ" onclick="history.back();">
 </form>
+
 
 
 <jsp:include page="/views/footer.jsp" />

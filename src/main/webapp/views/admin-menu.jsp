@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/admin.css">
 </head>
 
-<jsp:include page="/views/header.jsp" />
+<jsp:include page="/views/admin-header.jsp" />
 
 
 
-<h1>管理者画面</h1>
+<h1>管理者メニュー</h1>
 
 ようこそ、${customer.lastName}さん
 
