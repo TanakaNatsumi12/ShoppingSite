@@ -13,7 +13,7 @@
 <body>
 
 
-ようこそ、${customer.lastName}さん
+<p>ようこそ、${customer.lastName}さん</p>
 
 <form action="/ShoppingSite/views/user-edit.jsp" method="get">
 <input type="submit" value="修正">

@@ -12,7 +12,7 @@
 <jsp:include page="/views/header.jsp" />
 
 
-IDもしくはパスワードが違います。
+<p>IDもしくはパスワードが違います。</p>
 
 <form action="/ShoppingSite/views/login-in.jsp" method="post">
 <input type="submit" value="ログイン画面へ戻る">
