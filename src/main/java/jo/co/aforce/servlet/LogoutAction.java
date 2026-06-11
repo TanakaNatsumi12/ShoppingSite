@@ -19,7 +19,7 @@ public class LogoutAction extends Action{
 		HttpSession session=request.getSession();
 		
 		if(session.getAttribute("customer")!=null) {
-			session.removeAttribute("customer");
+			session.invalidate();
 			return "views/logout-out.jsp"; 
 		}
 		

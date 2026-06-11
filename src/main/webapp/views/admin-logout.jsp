@@ -11,19 +11,12 @@
 <jsp:include page="/views/admin-header.jsp" />
 
 
-
-<h1>管理者メニュー</h1>
-
-ようこそ、${customer.lastName}さん
+<p>ログアウトしますか？</p>
+<p><a href="<%= request.getContextPath() %>/Logout.action">ログアウト</a></p>
 
 
-
-
-
-
-<form action="/ShoppingSite/views/admin-logout.jsp" method="post">
-<input type="submit" value="ログアウト">
+<form>
+    <input type="button" value="いいえ" onclick="history.back();">
 </form>
-
 
 <jsp:include page="/views/footer.jsp" />

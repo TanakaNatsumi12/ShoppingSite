@@ -5,7 +5,7 @@
 
 <div class="top-bar">
 		<div class="top-links">
-			<a href="<%= request.getContextPath() %>/views/logout-in.jsp">ログアウト</a>
+			<a href="<%= request.getContextPath() %>/views/admin-logout.jsp">ログアウト</a>
 		</div>
 	</div>
 
