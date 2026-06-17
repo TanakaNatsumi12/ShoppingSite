@@ -11,7 +11,7 @@
 
 <h1>商品追加フォーム</h1>
 
-<form action="<%= request.getContextPath() %>/productAddConfirm" method="post">
+<form action="<%= request.getContextPath() %>/productAddConfirm" method="post" enctype="multipart/form-data">
 	商品名：<input type="text" name="name" required><br><br>
     説明：<textarea name="description"></textarea><br><br>
     価格：<input type="number" name="price" required><br><br>
@@ -48,39 +48,66 @@
 
 <script>
 
-document.getElementById("teamSelect").addEventListener("change", function() {
-         const selectedText = this.options[this.selectedIndex].text;
-         document.getElementById("teamName").value = selectedText; // ★チーム名を hidden に入れる
-            });
-                        
-document.getElementById("playerSearch").addEventListener("input", function() {
-    const keyword = this.value;
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (keyword.length < 2) {
-        document.getElementById("playerSuggestions").innerHTML = "";
-        return;
+    // =========================
+    // ① チーム名（初期値も必ず入れる）
+    // =========================
+    const teamSelect = document.getElementById("teamSelect");
+    const teamName = document.getElementById("teamName");
+
+    function setTeamName() {
+        teamName.value = teamSelect.options[teamSelect.selectedIndex].text;
     }
 
-    fetch("<%= request.getContextPath() %>/searchPlayer?keyword=" + encodeURIComponent(keyword))
-        .then(response => response.json())
-        .then(players => {
-            const box = document.getElementById("playerSuggestions");
+    // 初期表示でも必ずセット
+    setTeamName();
+
+    // 変更時も更新
+    teamSelect.addEventListener("change", setTeamName);
+
+
+    // =========================
+    // ② 選手検索（履歴入力対策込み）
+    // =========================
+    const playerSearch = document.getElementById("playerSearch");
+    const playerId = document.getElementById("playerId");
+    const playerName = document.getElementById("playerName");
+    const box = document.getElementById("playerSuggestions");
+
+    playerSearch.addEventListener("input", function () {
+        const keyword = this.value;
+
+        // 手入力・履歴入力のたびに一旦リセット
+        playerId.value = "";
+        playerName.value = keyword;
+
+        if (keyword.length < 2) {
             box.innerHTML = "";
+            return;
+        }
 
-            
+        fetch("<%= request.getContextPath() %>/searchPlayer?keyword=" + encodeURIComponent(keyword))
+            .then(response => response.json())
+            .then(players => {
+                box.innerHTML = "";
 
-            players.forEach(p => {
-                const div = document.createElement("div");
-                div.textContent = p.name;
-                div.addEventListener("click", function() {
-                    document.getElementById("playerSearch").value = p.name;
-                    document.getElementById("playerId").value = p.id;
-                    document.getElementById("playerName").value = p.name;
-                    box.innerHTML = "";
+                players.forEach(p => {
+                    const div = document.createElement("div");
+                    div.textContent = p.name;
+
+                    div.addEventListener("click", function () {
+                        playerSearch.value = p.name;
+                        playerId.value = p.id;
+                        playerName.value = p.name;
+                        box.innerHTML = "";
+                    });
+
+                    box.appendChild(div);
                 });
-                box.appendChild(div);
             });
-        });
+    });
+
 });
 </script>
 

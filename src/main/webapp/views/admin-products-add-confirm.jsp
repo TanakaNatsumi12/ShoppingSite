@@ -18,6 +18,10 @@
 <p>在庫：${stock}</p>
 <p>チーム名：${team_name}</p>
 <p>選手名：${player_name}</p>
+<p>商品画像</p>
+<img src="<%= request.getContextPath() %>/${imagePath}" 
+     alt="商品画像" 
+     style="max-width:500px;">
 
 
 
