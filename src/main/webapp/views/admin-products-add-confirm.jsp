@@ -27,7 +27,14 @@
 
 
 
-<form action="<%= request.getContextPath() %>" method="post">
+<form action="<%= request.getContextPath() %>/productAddSuccess" method="post">
+	<input type="hidden" name="name" value="${name}">
+    <input type="hidden" name="description" value="${description}">
+    <input type="hidden" name="price" value="${price}">
+    <input type="hidden" name="stock" value="${stock}">
+    <input type="hidden" name="team_id" value="${team_id}">
+    <input type="hidden" name="player_id" value="${player_id}">
+    <input type="hidden" name="image_url" value="${imagePath}">
     <button type="submit">この内容で登録</button>
 </form>
 

@@ -11,10 +11,9 @@
 
 
 
+<h1>商品登録に失敗しました。</h1>
 
-<h1>商品登録完了</h1>
-
-<p><a href="<%= request.getContextPath() %>/views/admin-products-list.jsp">商品一覧に戻る</a></p>
+<p><a href="<%= request.getContextPath() %>/views/admon-products-add.jsp">商品追加画面に戻る</a></p>
 
 
 <jsp:include page="/views/footer.jsp" />

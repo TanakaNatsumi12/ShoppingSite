@@ -45,6 +45,39 @@ public class ProductDAO extends DAO {
 
 	     return list;
 	 }
+	
+	
+	public int insertProduct(ProductsBean product) {
+        int result = 0;
+
+        try {
+            Connection con = getConnection();
+
+            String sql = "INSERT INTO products "
+                       + "(name, description, price, stock, team_id, player_id, image_url) "
+                       + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, product.getName());
+            ps.setString(2, product.getDescription());
+            ps.setInt(3, product.getPrice());
+            ps.setInt(4, product.getStock());
+            ps.setInt(5, product.getTeamId());
+            ps.setInt(6, product.getPlayerId());
+            ps.setString(7, product.getImageUrl());
+
+            result = ps.executeUpdate();
+
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }
 
 
