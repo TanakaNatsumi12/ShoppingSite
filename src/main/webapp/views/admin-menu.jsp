@@ -17,6 +17,9 @@
 ようこそ、${customer.lastName}さん
 
 
+<form action="<%= request.getContextPath() %>/productsListServlet" method="post">
+<input type="submit" value="商品一覧">
+</form>
 
 
 
