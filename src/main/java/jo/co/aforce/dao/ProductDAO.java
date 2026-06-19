@@ -166,6 +166,73 @@ public class ProductDAO extends DAO {
 	    }
 	}
 	
+	public List<ProductsBean> searchProducts(String keyword) {
+	    List<ProductsBean> list = new ArrayList<>();
+
+	    try {
+	        Connection con = getConnection();
+
+	        String sql = "SELECT * FROM products WHERE name LIKE ? OR description LIKE ?";
+	        PreparedStatement ps = con.prepareStatement(sql);
+
+	        String like = "%" + keyword + "%";
+	        ps.setString(1, like);
+	        ps.setString(2, like);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            ProductsBean p = new ProductsBean(
+	                rs.getInt("id"),
+	                rs.getString("name"),
+	                rs.getString("description"),
+	                rs.getInt("price"),
+	                rs.getInt("stock"),
+	                rs.getInt("team_id"),
+	                rs.getInt("player_id"),
+	                rs.getString("image_url")
+	            );
+	            list.add(p);
+	        }
+
+	        rs.close();
+	        ps.close();
+	        con.close();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return list;
+	}
+
+	public List<ProductsBean> findLatest(int limit) {
+	    List<ProductsBean> list = new ArrayList<>();
+
+	    try {
+	        Connection con = getConnection();
+	        String sql = "SELECT * FROM products ORDER BY id DESC LIMIT ?";
+	        PreparedStatement ps = con.prepareStatement(sql);
+	        ps.setInt(1, limit);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            ProductsBean p = new ProductsBean();
+	            p.setId(rs.getInt("id"));
+	            p.setName(rs.getString("name"));
+	            p.setPrice(rs.getInt("price"));
+	            p.setImageUrl(rs.getString("image_url"));
+	            list.add(p);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return list;
+	}
+	
 }
 
 

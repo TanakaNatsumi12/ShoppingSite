@@ -58,7 +58,8 @@ body {
 
 .middle-bar {
   background: rgb(0, 0, 0);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-content: space-between;
   padding: 23px 30px;
@@ -75,9 +76,37 @@ body {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+	justify-self: start;
+}
+
+.search-form {
+	justify-self: center;
+		display: flex;
+		gap: 5px;
+}
+
+.right-space {
+	flex: 1;
+}
+
+.search-form input {
+	width: 300px;
+	padding: 6px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.search-form button {
+	padding: 6px 12px;
+	background: white;
+	color: black;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.search-form button:hover {
+	opacity: 0.8;
 }
 
 .nav-bar {
