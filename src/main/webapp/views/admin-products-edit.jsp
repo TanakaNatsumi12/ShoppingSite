@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,39 +12,61 @@
 </head>
 <jsp:include page="/views/admin-header.jsp" />
 
-<h1>商品追加フォーム</h1>
+<h1>商品編集</h1>
 
-<form action="<%= request.getContextPath() %>/productAddConfirm" method="post" enctype="multipart/form-data">
-	商品名：<input type="text" name="name" required><br><br>
-    説明：<textarea name="description"></textarea><br><br>
-    価格：<input type="number" name="price" required><br><br>
-    在庫：<input type="number" name="stock" required><br><br>
+<form action="<%= request.getContextPath() %>/productsEditUpdate" method="post" enctype="multipart/form-data" onsubmit="return confirmUpdate()">
+    <input type="hidden" name="id" value="${product.id}">
+
+    <p>商品名：
+        <input type="text" name="name" value="${product.name}">
+    </p>
     
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <p>説明：
+    <textarea name="description">${product.description}</textarea>
+	</p>
 
+    <p>価格：
+        <input type="number" name="price" value="${product.price}">
+    </p>
+
+    <p>在庫：
+        <input type="number" name="stock" value="${product.stock}">
+    </p>
+    
 	<select name="team_id" id="teamSelect">
-    	<c:forEach var="t" items="${teams}">
-        	<option value="${t.id}">${t.name}</option>
-    	</c:forEach>
+    <c:forEach var="t" items="${teams}">
+        <option value="${t.id}"
+            <c:if test="${t.id == product.teamId}">selected</c:if>>
+            ${t.name}
+        </option>
+    </c:forEach>
 	</select>
 	
-	<input type="hidden" name="team_name" id="teamName">
-    
-    <br><br>
-    <input type="text"  id="playerSearch" placeholder="選手名を入力" required>
-    <input type="hidden" name="player_id" id="playerId"> 
-    <input type="hidden" name="player_name" id="playerName">
-
-	<div id="playerSuggestions" class="suggestions"></div>
-    
-    <br><br>
-    画像：<input type="file" name="image"><br><br>
-    
-    
 	
-    <button type="submit">確認</button>
+	
+	<input type="hidden" name="team_name" id="teamName">
+	
+	 <br><br>
+    <input type="text"  id="playerSearch" placeholder="選手名を入力" value="${product.playerName}" required>
+    <input type="hidden" name="player_id" id="playerId" value="${product.playerId}">
+    <input type="hidden" name="player_name" id="playerName" value="${product.playerName}">
+
+    <div id="playerSuggestions" class="suggestions"></div>
+
+	<p>画像：
+    <input type="file" name="image">
+	</p>
+
+<input type="hidden" name="current_image" value="<%= request.getContextPath() %>/img/registration/${imageFileName}"">
+
+<p>現在の画像：<img src="${pageContext.request.contextPath}${product.imageUrl}" width="200"></p>
+
+
+
+    <button type="submit">更新</button>
 </form>
 
+<p></p>
 <form>
     <input type="button" value="戻る" onclick="history.back();">
 </form>
@@ -109,6 +134,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function confirmUpdate() {
+    return confirm("本当に更新しますか？");
+}
+
 </script>
 
 <jsp:include page="/views/footer.jsp" />

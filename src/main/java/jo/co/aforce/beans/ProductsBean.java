@@ -10,7 +10,9 @@ public class ProductsBean {
     private int teamId;
     private int playerId;
     private String imageUrl;
-
+    private String playerName;
+    private String teamName;
+    
     // ★ 引数なしコンストラクタ（JavaBeans必須）
     public ProductsBean() {
     }
@@ -27,6 +29,17 @@ public class ProductsBean {
         this.playerId = playerId;
         this.imageUrl = imageUrl;
     }
+    
+    public ProductsBean(int id, String name, String description, int price, int stock,
+            String imageUrl) {
+ this.id = id;
+ this.name = name;
+ this.description = description;
+ this.price = price;
+ this.stock = stock;
+ 
+ this.imageUrl = imageUrl;
+}
 
     // ★ 新規追加用（idなし）コンストラクタ
     public ProductsBean(String name, String description, int price, int stock,
@@ -97,4 +110,25 @@ public class ProductsBean {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+    
+    
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+    
+    
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
 }

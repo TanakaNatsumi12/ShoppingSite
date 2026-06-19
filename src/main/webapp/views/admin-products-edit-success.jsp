@@ -9,10 +9,7 @@
 </head>
 <jsp:include page="/views/admin-header.jsp" />
 
-
-
-
-<h1>商品登録完了</h1>
+<h1>編集に成功しました</h1>
 
 <p><a href="<%= request.getContextPath() %>/productsListServlet">商品一覧に戻る</a></p>
 

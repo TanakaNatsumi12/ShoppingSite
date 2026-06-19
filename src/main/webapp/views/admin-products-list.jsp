@@ -37,14 +37,13 @@
             <td>${p.stock}</td>
 
             <td>
-                <a href="editProduct.jsp?id=${p.id}">
+                <a href="<%= request.getContextPath() %>/productEdit?id=${p.id}">
                     <button>編集</button>
                 </a>
             </td>
 
             <td>
-                <a href="../DeleteProductServlet?id=${p.id}"
-                   onclick="return confirm('本当に削除しますか？');">
+                <a href="<%= request.getContextPath() %>/productDelete?id=${p.id}">
                     <button>削除</button>
                 </a>
             </td>

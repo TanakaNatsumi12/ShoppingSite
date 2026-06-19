@@ -19,11 +19,9 @@
 <p>チーム名：${team_name}</p>
 <p>選手名：${player_name}</p>
 <p>商品画像</p>
-<img src="<%= request.getContextPath() %>/${imagePath}" 
+<img src="<%= request.getContextPath() %>/img/confirm/${imageFileName}" 
      alt="商品画像" 
-     style="max-width:500px;">
-
-
+     style="max-width:300px;">
 
 
 
@@ -34,9 +32,10 @@
     <input type="hidden" name="stock" value="${stock}">
     <input type="hidden" name="team_id" value="${team_id}">
     <input type="hidden" name="player_id" value="${player_id}">
-    <input type="hidden" name="image_url" value="${imagePath}">
+    <input type="hidden" name="image_file" value="${imageFileName}">
     <button type="submit">この内容で登録</button>
 </form>
+
 
 <form>
     <input type="button" value="戻る" onclick="history.back();">

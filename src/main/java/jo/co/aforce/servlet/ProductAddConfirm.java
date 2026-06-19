@@ -45,7 +45,8 @@ public class ProductAddConfirm extends HttpServlet{
 		        part.write(filePath);
 
 
-		        
+		        System.out.println("UPLOAD PATH = " + uploadPath);
+
 		       
 
 		        request.setAttribute("name", name);
@@ -56,7 +57,9 @@ public class ProductAddConfirm extends HttpServlet{
 		        request.setAttribute("player_id", playerId);
 		        request.setAttribute("team_name", teamName);
 		        request.setAttribute("player_name", playerName);
-		        request.setAttribute("imagePath", "img/confirm/" + fileName);
+		        request.setAttribute("imageFileName",  fileName);
+		        
+		        
 		       
 		        RequestDispatcher rd = request.getRequestDispatcher("/views/admin-products-add-confirm.jsp");
 		        rd.forward(request, response);

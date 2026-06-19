@@ -78,6 +78,94 @@ public class ProductDAO extends DAO {
 
         return result;
     }
+	
+	public ProductsBean findById(int id) {
+	    ProductsBean product = null;
+
+	    try {
+	        Connection con = getConnection();
+
+	        String sql = "SELECT * FROM products WHERE id = ?";
+	        PreparedStatement ps = con.prepareStatement(sql);
+	        ps.setInt(1, id);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            product = new ProductsBean(
+	                rs.getInt("id"),
+	                rs.getString("name"),
+	                rs.getString("description"),
+	                rs.getInt("price"),
+	                rs.getInt("stock"),
+	                rs.getInt("team_id"),
+	                rs.getInt("player_id"),
+	                rs.getString("image_url")
+	            );
+	        }
+
+	        rs.close();
+	        ps.close();
+	        con.close();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return product;
+	}
+	
+	public int update(ProductsBean product) {
+	    int result = 0;
+
+	    try {
+	        Connection con = getConnection();
+
+	        String sql = "UPDATE products SET "
+	                + "name=?, description=?, price=?, stock=?, "
+	                + "team_id=?, player_id=?, image_url=? "
+	                + "WHERE id=?";
+
+	        PreparedStatement ps = con.prepareStatement(sql);
+
+	        ps.setString(1, product.getName());
+	        ps.setString(2, product.getDescription());
+	        ps.setInt(3, product.getPrice());
+	        ps.setInt(4, product.getStock());
+	        ps.setInt(5, product.getTeamId());
+	        ps.setInt(6, product.getPlayerId());
+	        ps.setString(7, product.getImageUrl());
+	        ps.setInt(8, product.getId());
+
+	        result = ps.executeUpdate();
+
+	        ps.close();
+	        con.close();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return result;
+	}
+
+	public boolean deleteProduct(int id) {
+	    String sql = "DELETE FROM products WHERE id = ?";
+
+	    try (Connection con = getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+	        pstmt.setInt(1, id);
+
+	        int result = pstmt.executeUpdate();
+	        return result == 1;
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+	
 }
 
 

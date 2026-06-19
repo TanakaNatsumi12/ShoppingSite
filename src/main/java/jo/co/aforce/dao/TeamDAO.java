@@ -39,4 +39,30 @@ public class TeamDAO extends DAO{
 	        return list;
 	    }
 	 
+	 public String findNameById(int id) {
+		    String name = null;
+
+		    try {
+		        Connection con = getConnection();
+		        String sql = "SELECT name FROM teams WHERE id = ?";
+		        PreparedStatement ps = con.prepareStatement(sql);
+		        ps.setInt(1, id);
+
+		        ResultSet rs = ps.executeQuery();
+
+		        if (rs.next()) {
+		            name = rs.getString("name");
+		        }
+
+		        rs.close();
+		        ps.close();
+		        con.close();
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+
+		    return name;
+		}
+
 }
