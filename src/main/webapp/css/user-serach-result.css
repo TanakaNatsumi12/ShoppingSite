@@ -27,7 +27,7 @@ body {
 
 	aspect-ratio: auto; /* ←固定比率やめる */
 	width: 100%;
-	max-width: 260px; /* ←カード自体を小さく */
+	max-width: 360px; /* ←カード自体を小さく */
 
 	display: flex;
 	flex-direction: column;
@@ -36,14 +36,19 @@ body {
 	box-sizing: border-box;
 	overflow: hidden;
 	transition: 0.2s;
+	
+	text-decoration: none;
+	color: inherit;
+	
 }
 
 .card img {
-	width: 100%;
-	height: 200px;   /* ←ここでサイズ決める */
-	object-fit: contain;
-	background: #f5f5f5;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 正方形にする */
+  object-fit: cover;   /* 画像をトリミングして綺麗に収める */
+  background: #f5f5f5;
 }
+
 
 .card .name {
 	width: 100%;

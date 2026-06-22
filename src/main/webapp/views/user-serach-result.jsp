@@ -18,21 +18,28 @@
   <main class="main">
 
     <!-- 上部ツールバー -->
-    <div class="toolbar">
-      <div>${products.size()} 件</div>
+    <form method="get" action="${pageContext.request.contextPath}/productSerach">
+  <div class="toolbar">
+  <input type="hidden" name="keyword" value="${param.keyword}">
+  
+    <div>${products.size()} 件</div>
 
-      <select>
-        <option>おすすめ順</option>
-        <option>価格順</option>
-      </select>
-    </div>
+    <select name="order" onchange="this.form.submit()">
+      <option value="name_desc" ${param.order == 'name_desc' ? 'selected' : ''}>五十音順 昇順</option>
+      <option value="name_asc"  ${param.order == 'name_asc' ? 'selected' : ''}>五十音順 降順</option>
+      <option value="price_desc" ${param.order == 'price_desc' ? 'selected' : ''}>価格高い順</option>
+      <option value="price_asc" ${param.order == 'price_asc' ? 'selected' : ''}>価格低い順</option>
+      
+    </select>
+  </div>
+</form>
 
     <!-- 商品グリッド -->
     <div class="grid">
 
       <c:forEach var="p" items="${products}">
         
-        <div class="card">
+        <a class="card" href="${pageContext.request.contextPath}/productDetail?id=${p.id}">
 
           <!-- 画像 -->
           <c:if test="${p.imageUrl != null}">
@@ -40,15 +47,13 @@
           </c:if>
 
           <!-- 名前 -->
-          <h3>${p.name}</h3>
+          <div class="name">${p.name}</div>
 
-          <!-- 説明 -->
-          <p>${p.description}</p>
 
           <!-- 価格 -->
-          <p class="price">¥${p.price}</p>
+          <div class="price">¥${p.price}</div>
 
-        </div>
+        </a>
 
       </c:forEach>
 

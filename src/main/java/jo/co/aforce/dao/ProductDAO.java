@@ -11,6 +11,42 @@ import jo.co.aforce.beans.ProductsBean;
 
 public class ProductDAO extends DAO {
 
+	public List<ProductsBean> findAll(String orderBy) {
+	    List<ProductsBean> list = new ArrayList<>();
+
+	    try {
+	        Connection con = getConnection();
+
+	        String sql = "SELECT * FROM products ORDER BY " + orderBy;
+	        PreparedStatement ps = con.prepareStatement(sql);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            ProductsBean p = new ProductsBean(
+	                rs.getInt("id"),
+	                rs.getString("name"),
+	                rs.getString("description"),
+	                rs.getInt("price"),
+	                rs.getInt("stock"),
+	                rs.getInt("team_id"),
+	                rs.getInt("player_id"),
+	                rs.getString("image_url")
+	            );
+	            list.add(p);
+	        }
+
+	        rs.close();
+	        ps.close();
+	        con.close();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return list;
+	}
+	
 	public List<ProductsBean> findAll() {
 		List<ProductsBean> list = new ArrayList<>();
 
@@ -166,13 +202,13 @@ public class ProductDAO extends DAO {
 	    }
 	}
 	
-	public List<ProductsBean> searchProducts(String keyword) {
+	public List<ProductsBean> searchProducts(String keyword, String orderBy) {
 	    List<ProductsBean> list = new ArrayList<>();
 
 	    try {
 	        Connection con = getConnection();
 
-	        String sql = "SELECT * FROM products WHERE name LIKE ? OR description LIKE ?";
+	        String sql = "SELECT * FROM products WHERE name LIKE ? OR description LIKE ? ORDER BY " + orderBy;
 	        PreparedStatement ps = con.prepareStatement(sql);
 
 	        String like = "%" + keyword + "%";
@@ -205,6 +241,7 @@ public class ProductDAO extends DAO {
 
 	    return list;
 	}
+
 
 	public List<ProductsBean> findLatest(int limit) {
 	    List<ProductsBean> list = new ArrayList<>();

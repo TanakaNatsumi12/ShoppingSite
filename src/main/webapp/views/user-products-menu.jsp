@@ -17,11 +17,11 @@
 <div class="grid">
 	
         <c:forEach var="p" items="${products}">
-            <div class="card">
+            <a class="card" href="${pageContext.request.contextPath}/productDetail?id=${p.id}">
                 <img src="${pageContext.request.contextPath}${p.imageUrl}">
                 <div class="name">${p.name}</div>
                 <div class="price">¥${p.price}</div>
-            </div>
+            </a>
         </c:forEach>
 </div>
 

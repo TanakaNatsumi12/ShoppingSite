@@ -21,15 +21,30 @@ public class ProductSearch extends HttpServlet{
 		request.setCharacterEncoding("UTF-8");
 
         String keyword = request.getParameter("keyword");
+        
+        
+        String order = request.getParameter("order");
+
+        String orderBy = "name ASC"; // デフォルト
+
+        if ("name_asc".equals(order)) {
+            orderBy = "name ASC";
+        } else if ("name_desc".equals(order)) {
+            orderBy = "name DESC";
+        } else if ("price_asc".equals(order)) {
+            orderBy = "price ASC";
+        } else if ("price_desc".equals(order)) {
+            orderBy = "price DESC";
+        }
 
         ProductDAO dao = new ProductDAO();
         List<ProductsBean> products;
           
 
         if (keyword != null && !keyword.isEmpty()) {
-            products = dao.searchProducts(keyword);
+            products = dao.searchProducts(keyword, orderBy);
         } else {
-            products = dao.findAll();
+            products = dao.findAll(orderBy);
         }
 
        
