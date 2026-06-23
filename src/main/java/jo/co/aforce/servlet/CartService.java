@@ -49,5 +49,19 @@ public class CartService{
             }
         }
     }
+    
+    public void updateCart(String sessionId, int productId, int quantity) throws Exception {
+
+        try (Connection conn = DAO.getConnection()) {
+
+            // カートID取得
+            Integer cartId = cartDao.findCartIdBySession(conn, sessionId);
+
+            if (cartId != null) {
+                cartDao.updateCartItem(conn, cartId, productId, quantity);
+            }
+        }
+    }
+
 	
 }

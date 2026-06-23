@@ -64,7 +64,8 @@ public class CartDAO extends DAO{
     }
     
     public List<Map<String, Object>> getCartItems(Connection conn, int cartId) throws Exception {
-        String sql = "SELECT ci.id, p.name, p.price, p.image_url AS image, ci.quantity " +
+        String sql = "SELECT ci.id, ci.product_id, p.name, p.price, p.image_url AS image, " +
+                     "ci.quantity, p.stock " +   // ← 在庫追加
                      "FROM cart_items ci " +
                      "JOIN products p ON ci.product_id = p.id " +
                      "WHERE ci.cart_id = ?";
@@ -77,11 +78,13 @@ public class CartDAO extends DAO{
 
         while (rs.next()) {
             Map<String, Object> item = new HashMap<>();
-            item.put("id", rs.getInt("id"));
+            item.put("id", rs.getInt("id"));                
+            item.put("product_id", rs.getInt("product_id"));
             item.put("name", rs.getString("name"));
             item.put("price", rs.getInt("price"));
             item.put("image", rs.getString("image"));
             item.put("quantity", rs.getInt("quantity"));
+            item.put("stock", rs.getInt("stock"));  // ← 在庫を追加
             list.add(item);
         }
 
@@ -98,5 +101,18 @@ public class CartDAO extends DAO{
             ps.executeUpdate();
         }
     }
+    
+    public void updateCartItem(Connection conn, int cartId, int productId, int quantity) throws Exception {
+
+        String sql = "UPDATE cart_items SET quantity = ? WHERE cart_id = ? AND product_id = ?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, quantity);
+            ps.setInt(2, cartId);
+            ps.setInt(3, productId);
+            ps.executeUpdate();
+        }
+    }
+
 
 }

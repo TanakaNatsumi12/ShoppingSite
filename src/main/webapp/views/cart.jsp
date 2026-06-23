@@ -42,17 +42,20 @@
                     <div class="name"><%= item.get("name") %></div>
                     
 
-                    <form action="updateCart" method="post">
-                        <input type="hidden" name="id" value="<%= item.get("id") %>"/>
+                    <form action="<%= request.getContextPath() %>/cartUpdate" method="post">
+                        <input type="hidden" name="id" value="<%= item.get("product_id") %>"/>
 
                         <select name="quantity" onchange="this.form.submit()">
-                            <% for (int i = 1; i <= 5; i++) { %>
-                                <option value="<%= i %>"
-                                    <%= (i == quantity) ? "selected" : "" %>>
-                                    <%= i %>
-                                </option>
-                            <% } %>
-                        </select>
+    						<% 
+        						int stock = (int) item.get("stock");
+    							int currentQty = (int) item.get("quantity");
+        						for (int i = 1; i <= stock; i++) { 
+    						%>
+        						<option value="<%= i %>" <%= (i == quantity) ? "selected" : "" %>>
+            						<%= i %>
+        						</option>
+    						<% } %>
+						</select>
                     </form>
 
                     <form action="<%= request.getContextPath() %>/cartDelete" method="post">
