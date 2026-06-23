@@ -27,7 +27,7 @@
     <p>在庫：${product.stock}</p>
 
     <div class="cart">
-      <form action="${pageContext.request.contextPath}/cart/add" method="post">
+      <form action="${pageContext.request.contextPath}/cartAdd" method="post">
         <input type="hidden" name="productId" value="${product.id}">
         <button type="submit">カートに入れる</button>
       </form>

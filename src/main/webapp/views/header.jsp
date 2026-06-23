@@ -8,7 +8,7 @@
 		<div class="top-links">
 			<a href="<%= request.getContextPath() %>/views/login-in.jsp">ログイン</a>
 			<a href="<%= request.getContextPath() %>/views/logout-in.jsp">ログアウト</a>
-			<a href="">🛒</a>
+			<a href="<%= request.getContextPath() %>/cartServlet">🛒</a>
 		</div>
 	</div>
 
