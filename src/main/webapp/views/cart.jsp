@@ -4,8 +4,8 @@
 <%@ page import="java.util.*" %>
 
 <%
-    List<Map<String, Object>> cart = 
-        (List<Map<String, Object>>) request.getAttribute("cart");
+	List<Map<String, Object>> cart =
+	(List<Map<String, Object>>) request.getAttribute("cart");
 
     int total = 0;
 %>
@@ -97,7 +97,7 @@
             <span>¥<%= total %></span>
         </div>
 
-        <form action="checkout" method="post">
+        <form action="<%= request.getContextPath() %>/purchaseConfirm" method="post">
             <button class="btn">お会計に進む</button>
         </form>
     </div>

@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+body {
+    font-family: sans-serif;
+    background: #f6f6f6;
+    margin: 0;
+}
+
+.container {
+    width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+}
+
+h2 {
+    border-left: 5px solid #1a3c8b;
+    padding-left: 10px;
+}
+
+/* ===== table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #f0f0f0;
+}
+
+.price {
+    text-align: right;
+}
+
+/* ===== summary ===== */
+.summary {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 16px;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d60000;
+    margin-top: 5px;
+}
+
+/* ===== buttons ===== */
+.btn-area {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.back {
+    background: #ccc;
+}
+
+.confirm {
+    background: #1a3c8b;
+    color: white;
+}
+
+.confirm:hover {
+    background: #122a5e;
+}

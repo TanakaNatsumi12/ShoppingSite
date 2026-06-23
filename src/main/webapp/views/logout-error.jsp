@@ -14,7 +14,7 @@
 
 <p>すでにログアウトしています。</p>
 
-<form action="views/login-in.jsp" method="post">
+<form action="<%= request.getContextPath() %>/views/login-in.jsp" method="post">
 <input type="submit" value="ログイン画面に戻る">
 </form>
 
