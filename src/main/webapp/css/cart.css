@@ -71,6 +71,13 @@
     font-size: 14px;
 }
 
+.send {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
 /* 合計 */
 .total {
     display: flex;

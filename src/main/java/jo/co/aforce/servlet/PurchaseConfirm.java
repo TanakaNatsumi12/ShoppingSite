@@ -55,6 +55,10 @@ public class PurchaseConfirm extends HttpServlet{
 
             // ▼ JSP に渡す
             request.setAttribute("cart", cartItems);
+            
+            request.setAttribute("customerName", customer.getLastName() + " " + customer.getFirstName());
+            request.setAttribute("customerAddress", customer.getAddress());
+            
 
             request.getRequestDispatcher("/views/purchase-confirm.jsp")
                    .forward(request, response);

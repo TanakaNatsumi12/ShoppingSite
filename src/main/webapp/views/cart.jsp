@@ -8,6 +8,7 @@
 	(List<Map<String, Object>>) request.getAttribute("cart");
 
     int total = 0;
+    int shopping = 800;
 %>
 
 <!DOCTYPE html>
@@ -87,6 +88,12 @@
         <div class="row">
             <span>小計</span>
             <span>¥<%= total %></span>
+            
+        </div>
+        
+        <div class="send">
+        	<span>送料</span>
+            <span>¥<%= shopping %></span>
         </div>
 
 
@@ -94,7 +101,7 @@
 
         <div class="total">
             <span>合計</span>
-            <span>¥<%= total %></span>
+            <span>¥<%= total+ shopping %></span>
         </div>
 
         <form action="<%= request.getContextPath() %>/purchaseConfirm" method="post">

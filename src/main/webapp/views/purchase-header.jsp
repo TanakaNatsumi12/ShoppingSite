@@ -11,7 +11,7 @@
 	 	
 			<div class="logo">
 				<img src="https://jesterball.jp/blog/wp-content/uploads/2021/05/NBA%E3%83%AD%E3%82%B4.jpg" alt="NBA logo">
-				購入画面
+				購入確認画面
 			</div>
     </div>
 
