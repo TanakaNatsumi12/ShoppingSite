@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet{
         if ("admin".equals(customer.getRole())) {
             request.getRequestDispatcher("views/admin-menu.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("views/user-menu.jsp").forward(request, response);
+            request.getRequestDispatcher("/productAction").forward(request, response);
         }
 		
 		

@@ -61,6 +61,8 @@ td {
 
 /* ボタンエリア */
 .btn-area {
+	display: flex;
+	gap: 20px; /* ボタンの間隔 */
     margin: 20px 10px;
 }
 
@@ -90,4 +92,10 @@ select {
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.back{
+	background: #ccc;
+	    margin-left: 15px;
+	
 }

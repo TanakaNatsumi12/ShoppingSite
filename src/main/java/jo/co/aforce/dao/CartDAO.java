@@ -114,5 +114,14 @@ public class CartDAO extends DAO{
         }
     }
 
+    public void clearCart(Connection conn, int cartId) throws Exception {
+        String sql = "DELETE FROM cart_items WHERE cart_id = ?";
 
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, cartId);
+            ps.executeUpdate();
+        }
+    }
+
+    
 }

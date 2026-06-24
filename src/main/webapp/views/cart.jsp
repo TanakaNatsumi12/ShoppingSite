@@ -8,7 +8,7 @@
 	(List<Map<String, Object>>) request.getAttribute("cart");
 
     int total = 0;
-    int shopping = 800;
+    int shopping;
 %>
 
 <!DOCTYPE html>
@@ -93,6 +93,14 @@
         
         <div class="send">
         	<span>送料</span>
+        	<% 
+        	if(total== 0){
+        		shopping = 0;
+        	}else{
+        		shopping = 800;
+        	}
+        	%>
+        	
             <span>¥<%= shopping %></span>
         </div>
 

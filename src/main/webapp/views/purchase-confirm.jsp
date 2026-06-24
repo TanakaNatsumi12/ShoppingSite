@@ -67,14 +67,14 @@ int shipping = 800; // 固定送料
 
 
 <div class="btn-area">
-    <form action="purchase" method="post" style="display:inline;">
+    <form action="<%= request.getContextPath() %>/purchaseSuccess" method="post">
         <button type="submit">注文を確定する</button>
     </form>
     
-<br></br>
+    <p></p>
     
     <form>
-    <input type="button" value="戻る" onclick="history.back();">
+    <input name="back" type="button" value="戻る" onclick="history.back();" >
 	</form>
 </div>
   
