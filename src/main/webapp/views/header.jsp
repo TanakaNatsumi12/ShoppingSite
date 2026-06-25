@@ -30,10 +30,8 @@
     
     
     <nav class="nav-bar">
-    <a href="">新着商品</a>
-    <a href="">ユニフォーム</a>
-    <a href="">アパレル</a>
-    <a href="">シューズ</a>
+    <a href="">　</a>
+    
   </nav>
     
 </header>

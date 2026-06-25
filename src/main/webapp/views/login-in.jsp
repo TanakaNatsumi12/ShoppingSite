@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,14 @@
 
 <body class="login-center">
 
-
+<%
+String msg = (String) request.getAttribute("errorMessage");
+if (msg != null) {
+%>
+    <p style="color:red;"><%= msg %></p>
+<%
+}
+%>
 
 <div class="login-box">
 <h1>ログイン画面</h1>

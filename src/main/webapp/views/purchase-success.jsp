@@ -18,6 +18,7 @@ int shipping = 800;
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/purchase-success.css">
 </head>
 <jsp:include page="/views/header.jsp" />
 
@@ -44,8 +45,8 @@ int shipping = 800;
 <hr>
 <p><strong>お支払い金額：¥<%= total + shipping %></strong></p>
 
-<form action="cart" method="post">
-
+<form action="<%= request.getContextPath() %>/productAction" method="post">
+	<input type="submit" value="お買い物を続ける" name="shopping">
 </form>
 
 <jsp:include page="/views/footer.jsp" />

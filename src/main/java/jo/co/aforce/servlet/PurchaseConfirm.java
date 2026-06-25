@@ -30,7 +30,8 @@ public class PurchaseConfirm extends HttpServlet{
         // ▼ ログインチェック
         UserBean customer = (UserBean) session.getAttribute("customer");
         if (customer == null) {
-            response.sendRedirect(request.getContextPath() + "/views/login-in.jsp");
+            request.setAttribute("errorMessage", "ログインが必要です");
+            request.getRequestDispatcher("/views/login-in.jsp").forward(request, response);
             return;
         }
 

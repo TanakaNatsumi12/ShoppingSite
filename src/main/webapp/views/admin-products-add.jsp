@@ -35,7 +35,7 @@
 	<div id="playerSuggestions" class="suggestions"></div>
     
     <br><br>
-    画像：<input type="file" name="image"><br><br>
+    画像：<input type="file" name="image" required><br><br>
     
     
 	

@@ -57,7 +57,7 @@
     <input type="file" name="image">
 	</p>
 
-<input type="hidden" name="current_image" value="<%= request.getContextPath() %>/img/registration/${imageFileName}"">
+<input type="hidden" name="current_image" value="${product.imageUrl}">
 
 <p>現在の画像：<img src="${pageContext.request.contextPath}${product.imageUrl}" width="200"></p>
 
